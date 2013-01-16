@@ -1,0 +1,17 @@
+@\section{ The Shunting Algorithm }
+	Shunting provides the means by wich we will parse our input regular expressions and tranform them from infix to post fix notation.  Shunting is an effecient way to maintain operator precedence, and since this is what we are most concerned with here it is the best approach compared to the alternatives, such as implementing a relatively bulky recursive descent parser.  
+
+	The rules governing shunting are simpler.  Three stacks are maintained during the process: an input stack, and output stack, and an operator stack.  If the current input symbol is an identifier, pop it from the input stack to the output stack; if it is an operator, while its precedence is less tha n or equal to the operator at the top of the output stack, pop the operator from operator stack onto the output stack, and finally pop the current symbol from the input stack to the operator stack; if it is a left paren, then pop it from the input stack to the output stack; and if it is a right paren, pop operators off the operator stack until a matching paren is found, then pop the left paren off the input stack.
+
+@\section{ Plan of The Program }
+	The shunting algorithm outlined above will be composed as a single function, shunt, whose input is the regex to be parsed.
+<< Shunt.js >>=
+	var shunt = function (input) {
+		<< variable declarations>>
+		while (input.length) {
+			<< code to parse the current symbol >>
+		}
+
+		<< code to compose output stack into postfix >>
+	};
+				
