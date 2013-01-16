@@ -8,6 +8,7 @@
 <<*>>=
 	var shunt = function (input) {
 		<< variable declarations >>
+		<< auxillary definitions >>
 		while (input.length) {
 			<< code to parse the current symbol >>
 		}
@@ -47,3 +48,25 @@
 << code to compose output stack into postfix >>=
 	postfix = compose_postfix(out);
 	return postfix;
+
+@ \section{ Identifiers }
+	Identifiers are the set of characters that are either escaped characters are not operators or parens.
+
+<< auxillary definitions >>=
+	var identifier = function (c) {
+		if ((!op(c) && c !== '(' && c !== ')') || c === '\\') {
+			return true;
+		}
+		return false;
+	};
+
+@ \section{ Operators }
+	Operators are either * (zero or more) + (one or more)  ? (zero or one)  . (concatenatation) | (disjunction)
+
+<< auxillary definitions >>=
+	var op = function (c) {
+		if (c === '+' || c === '*' || c === '?' || c === '.' || c === '|') {
+			return true;
+		}
+		return false;
+	};
