@@ -1,0 +1,6 @@
+@ \section{ Hello  }
+	This program prints hello and exits. 
+
+<< Print Hello >>=
+	console.log('hello');
+
