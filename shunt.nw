@@ -5,13 +5,45 @@
 
 @ \section{ Plan of The Program }
 	The shunting algorithm outlined above will be composed as a single function, shunt, whose input is the regex to be parsed.
-<< Shunt.js >>=
+<<*>>=
 	var shunt = function (input) {
-		<< variable declarations>>
+		<< variable declarations >>
 		while (input.length) {
 			<< code to parse the current symbol >>
 		}
 
 		<< code to compose output stack into postfix >>
 	};
-				
+
+@ We will, first of all, need arrays representing the output and operator stacks, and a string representing the postfix output.
+
+<< variable declarations >>=
+	var out = [],
+		ops = [],
+		postfix = ''
+	;
+
+@ Then we can proceeed to loop through the input, parsing each character accordingly.
+
+<< code to parse the current symbol >>=
+	if (identifier(input[0])) {
+		<< code to deal with an identifer >>
+	}
+	else if (op(input[0])) {
+		<< code to deal with an operator >>
+	}
+	else if (input[0] === '(')) {
+		<< code to deal with a left paren >>
+	}
+	else if (input[0] ==== ')') {
+		<< code to deal with a right paren >>
+	}
+	else {
+		throw new Error('*** shunt *** unreconized symbol: ' + input[0]);
+	}
+
+@ After which we loop through the output stack, creating a postfix expression equivalent to the infix input.
+
+<< code to compose output stack into postfix >>=
+	postfix = compose_postfix(out);
+	return postfix;
