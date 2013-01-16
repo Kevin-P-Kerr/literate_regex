@@ -1,6 +1,15 @@
 @ \section{ Hello  }
 	This program prints hello and exits. 
 
-<< Print Hello >>=
-	console.log('hello');
+<<*>>=
+	var hello = function () {
+	<< code to print hello >>	
+};
 
+	hello();
+
+@ \section{ Printing Hello }
+	Hello is printed with console.log.
+
+<< code to print hello >>=
+	console.log('hello');
